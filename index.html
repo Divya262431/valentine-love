@@ -12,51 +12,51 @@ margin:0;
 padding:0;
 font-family:'Poppins',sans-serif;
 text-align:center;
-background: linear-gradient(to bottom right,#ffd6e8,#ffeef5,#fff5f8);
-background-attachment:fixed;
 color:#5a0033;
+background:linear-gradient(to bottom right,#ffd6e8,#fff0f5);
 overflow-x:hidden;
 }
 
-/* Floating Hearts */
+/* Romantic Background Overlay */
 body::before{
-content:"💗 💕 💖 💞 💘 💓 ❤️";
+content:"";
 position:fixed;
 top:0;
 left:0;
 width:100%;
-font-size:22px;
+height:100%;
+background-image:url('https://i.imgur.com/8Km9tLL.png');
+background-size:cover;
 opacity:0.15;
-animation: float 20s linear infinite;
-white-space:nowrap;
+z-index:-1;
 }
 
-@keyframes float{
-from{transform:translateX(-100%);}
-to{transform:translateX(100%);}
+/* Falling Roses */
+.petal{
+position:fixed;
+top:-50px;
+font-size:20px;
+animation:fall linear infinite;
+}
+@keyframes fall{
+to{transform:translateY(100vh) rotate(360deg);}
+}
+
+/* Sparkle Cursor */
+.sparkle{
+position:fixed;
+pointer-events:none;
+font-size:18px;
+animation:spark 1s linear forwards;
+}
+@keyframes spark{
+to{opacity:0; transform:translateY(-20px);}
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-weight:bold;
 font-size:32px;
 margin-top:40px;
-}
-
-.bold{
-font-weight:600;
-font-size:18px;
-}
-
-.page{
-display:none;
-animation:fade 0.8s ease-in-out;
-padding:25px;
-}
-
-@keyframes fade{
-from{opacity:0;}
-to{opacity:1;}
 }
 
 button{
@@ -70,58 +70,63 @@ color:white;
 cursor:pointer;
 transition:0.3s;
 }
-
 button:hover{
 background:#ff1a66;
 transform:scale(1.05);
 }
 
-.gift{
-font-size:70px;
-margin:25px;
-cursor:pointer;
-transition:0.3s;
+.page{
+display:none;
+animation:fade 1s ease-in-out;
+padding:20px;
 }
-
-.gift:hover{
-transform:scale(1.2);
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
 }
 
 .hidden{display:none;}
 
+.teddyImage{
+width:260px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+
+.giftBox{
+margin:25px auto;
+padding:15px;
+background:#fff0f5;
+border-radius:20px;
+width:80%;
+box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+
 .longText{
-max-width:850px;
-margin:auto;
 white-space:pre-line;
 line-height:1.7;
-margin-top:20px;
-font-size:16px;
+margin-top:15px;
 }
 
 .pinkBox{
 background:#ffe6f2;
 padding:20px;
 border-radius:20px;
-max-height:350px;
+max-height:300px;
 overflow-y:auto;
-box-shadow:0 10px 25px rgba(0,0,0,0.1);
-}
-
-.teddyImage{
-width:260px;
-margin-top:20px;
-border-radius:20px;
-box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 .food{
 font-size:40px;
-animation:floatFood 2s infinite alternate;
+animation:float 2s infinite alternate;
+}
+@keyframes float{
+to{transform:translateY(-10px);}
 }
 
-@keyframes floatFood{
-from{transform:translateY(0);}
-to{transform:translateY(-12px);}
+.timer{
+margin-top:15px;
+font-weight:600;
 }
 </style>
 </head>
@@ -130,21 +135,22 @@ to{transform:translateY(-12px);}
 
 <!-- MUSIC -->
 <audio autoplay loop>
-<source src="love.mp3" type="audio/mpeg">
+<source src="Asku-Laska-MassTamilan.fm.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PAGE 1 -->
 <div id="page1" class="page" style="display:block;">
 <h1>Will you be my love 🪷❤️</h1>
-<button onclick="nextPage(2)">Yes 💕</button>
+<button onclick="yesClicked()">Yes 💕</button>
 <button id="noBtn">No</button>
+<div class="timer" id="loveTimer"></div>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="page">
 <h1>Dudu & Bubu 💞</h1>
-<img src="dudu.jpg" class="teddyImage">
-<p class="bold">I love you so much Mamaaa... ❤️🤍</p>
+<img src="teddy.jpg" class="teddyImage">
+<p><b>I love you so much Mamaaa... ❤️🤍</b></p>
 <button onclick="nextPage(3)">Next ➡</button>
 </div>
 
@@ -152,7 +158,10 @@ to{transform:translateY(-12px);}
 <div id="page3" class="page">
 <h1>Open Your Gifts 🎁</h1>
 
-<div class="gift" onclick="openGift(1)">🎁</div>
+<!-- GIFT 1 -->
+<div class="giftBox">
+<h2>🎁 Gift 1</h2>
+<button onclick="openGift(1)">Open</button>
 <div id="gift1" class="hidden longText">
 I love you, Kamal—
 not because I planned to,
@@ -178,8 +187,12 @@ yet always needed.
 With you, the world feels
 safe, warm, whole.
 </div>
+</div>
 
-<div class="gift" onclick="openGift(2)">🎁</div>
+<!-- GIFT 2 -->
+<div class="giftBox">
+<h2>🎁 Gift 2</h2>
+<button onclick="openGift(2)">Open</button>
 <div id="gift2" class="hidden longText">
 I don’t want you just in moments,
 not only in photographs
@@ -200,9 +213,13 @@ every single day
 feels like something
 worth celebrating.
 </div>
+</div>
 
-<div class="gift" onclick="openGift(3)">🎁</div>
-<div id="gift3" class="hidden longText pinkBox">
+<!-- GIFT 3 -->
+<div class="giftBox">
+<h2>🎁 Gift 3</h2>
+<button onclick="openGift(3)">Open</button>
+<div id="gift3" class="hidden pinkBox longText">
 நான் உன்னை காதலிக்கிறேன் கமல் 💗
 I love you, Kamal ❤️
 Te amo, Kamal 💖
@@ -217,25 +234,15 @@ Jeg elsker dig, Kamal ❣️
 Jeg elsker deg, Kamal 💌
 Minä rakastan sinua, Kamal 💙
 Я люблю тебя, Kamal 💜
-Я тебе кохаю, Kamal 🤍
 Seni seviyorum, Kamal 🧡
 أنا أحبك يا كمال ❤️‍🔥
-אני אוהבת אותך קמאל 💖
-मैं तुमसे प्यार करती हूँ कमल 💕
-আমি তোমাকে ভালোবাসি কমল 💓
-నేను నిన్ను ప్రేమిస్తున్నాను కమల్ 💞
-ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ ಕಮಲ್ 💘
-ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു കമൽ 💝
-මම ඔයාට ආදරෙයි කමල් 💟
 我爱你 卡马尔 ❤️
 愛してる カマル 💕
 사랑해 카말 💓
-Saya cinta kamu Kamal 💗
-Aku cinta padamu Kamal 💞
 Σ’ αγαπώ, Καμάλ 💓
 Nakupenda, Kamal 💞
 Aloha wau iā ʻoe, Kamal ❤️
-Te aroha nei au ia koe, Kamal 💌
+</div>
 </div>
 
 <button onclick="nextPage(4)">Next ➡</button>
@@ -243,35 +250,15 @@ Te aroha nei au ia koe, Kamal 💌
 
 <!-- PAGE 4 -->
 <div id="page4" class="page">
-<h1>More Gifts 🎀</h1>
-
-<div class="gift">🎁</div>
-<button onclick="openGift(4)">Open</button>
-<p id="gift4" class="hidden longText">Our peaceful home 🏡</p>
-
-<div class="gift">🎁</div>
-<button onclick="openGift(5)">Open</button>
-<p id="gift5" class="hidden longText">Growing together forever 💑</p>
-
-<div class="gift">🎁</div>
-<button onclick="openGift(6)">Open</button>
-<p id="gift6" class="hidden longText">Holding hands till old age 👵👴</p>
-
+<h1>For You 🌹🍫</h1>
+<div class="food">
+⚘️⚘️⚘️⚘️🍫🍫🍫🍬🍬🍭🪷🪷🪷
+</div>
 <button onclick="nextPage(5)">Next ➡</button>
 </div>
 
 <!-- PAGE 5 -->
 <div id="page5" class="page">
-<h1>For You 🌹🍫</h1>
-<div class="food">
-⚘️⚘️⚘️⚘️🍫🍫🍫🍫🍫🍫🍫🍬🍬🍬🍬🍭🍭🍭🍭🍭🥛🥛🥛🥛🥛
-🪷🪷🪷🪷🪷🪷🪷
-</div>
-<button onclick="nextPage(6)">Next ➡</button>
-</div>
-
-<!-- PAGE 6 -->
-<div id="page6" class="page">
 <h1>Our Marriage Journey 💍</h1>
 <button onclick="openMarriage()">Click to Open</button>
 <p id="marriageText" class="hidden longText">
@@ -282,13 +269,13 @@ Family Blessings – Our love was strengthened with support and approval.
 Sacred Promise – We exchanged vows to stay together in all phases of life.
 Partnership – We began building a peaceful, loving life side by side.
 </p>
-<button onclick="nextPage(7)">Next ➡</button>
+<button onclick="nextPage(6)">Next ➡</button>
 </div>
 
-<!-- PAGE 7 -->
-<div id="page7" class="page">
+<!-- PAGE 6 -->
+<div id="page6" class="page">
 <h1>Forever ❤️</h1>
-<p class="bold">We are married by our heart, soul and thoughts.</p>
+<p><b>We are married by our heart, soul and thoughts.</b></p>
 </div>
 
 <script>
@@ -305,11 +292,59 @@ function openMarriage(){
 document.getElementById('marriageText').classList.remove('hidden');
 }
 
+/* Moving No Button */
 const noBtn=document.getElementById("noBtn");
 noBtn.addEventListener("mouseover",function(){
 noBtn.style.position="absolute";
 noBtn.style.top=Math.random()*400+"px";
 noBtn.style.left=Math.random()*300+"px";
+});
+
+/* Fireworks */
+function yesClicked(){
+for(let i=0;i<25;i++){
+let fire=document.createElement("div");
+fire.innerHTML="🎆";
+fire.style.position="fixed";
+fire.style.left=Math.random()*100+"vw";
+fire.style.top=Math.random()*100+"vh";
+document.body.appendChild(fire);
+setTimeout(()=>fire.remove(),1000);
+}
+nextPage(2);
+}
+
+/* Love Timer */
+const startDate=new Date("2024-01-01"); // Change date
+function updateTimer(){
+const now=new Date();
+const diff=now-startDate;
+const days=Math.floor(diff/(1000*60*60*24));
+document.getElementById("loveTimer").innerHTML=
+"💞 Loving each other for "+days+" days 💞";
+}
+setInterval(updateTimer,1000);
+updateTimer();
+
+/* Falling Roses */
+for(let i=0;i<20;i++){
+let petal=document.createElement("div");
+petal.className="petal";
+petal.innerHTML="🌹";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(petal);
+}
+
+/* Sparkle Cursor */
+document.addEventListener("mousemove",function(e){
+let spark=document.createElement("div");
+spark.className="sparkle";
+spark.innerHTML="✨";
+spark.style.left=e.pageX+"px";
+spark.style.top=e.pageY+"px";
+document.body.appendChild(spark);
+setTimeout(()=>spark.remove(),800);
 });
 </script>
 
