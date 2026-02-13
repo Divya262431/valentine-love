@@ -17,7 +17,7 @@ background:linear-gradient(to bottom right,#ffd6e8,#fff0f5);
 overflow-x:hidden;
 }
 
-/* Romantic Background Overlay */
+/* Romantic Overlay */
 body::before{
 content:"";
 position:fixed;
@@ -127,6 +127,7 @@ to{transform:translateY(-10px);}
 .timer{
 margin-top:15px;
 font-weight:600;
+font-size:18px;
 }
 </style>
 </head>
@@ -135,7 +136,7 @@ font-weight:600;
 
 <!-- MUSIC -->
 <audio autoplay loop>
-<source src="Asku-Laska-MassTamilan.fm.mp3" type="audio/mpeg">
+<source src="love.mp3" type="audio/mpeg">
 </audio>
 
 <!-- PAGE 1 -->
@@ -143,7 +144,7 @@ font-weight:600;
 <h1>Will you be my love 🪷❤️</h1>
 <button onclick="yesClicked()">Yes 💕</button>
 <button id="noBtn">No</button>
-<div class="timer" id="loveTimer"></div>
+<div class="timer">💞 Loving each other for 118 days 💞</div>
 </div>
 
 <!-- PAGE 2 -->
@@ -313,18 +314,6 @@ setTimeout(()=>fire.remove(),1000);
 }
 nextPage(2);
 }
-
-/* Love Timer */
-const startDate=new Date("2025-10-18"); // Change date
-function updateTimer(){
-const now=new Date();
-const diff=now-startDate;
-const days=Math.floor(diff/(1000*60*60*24));
-document.getElementById("loveTimer").innerHTML=
-"💞 Loving each other for "+days+" days 💞";
-}
-setInterval(updateTimer,118);
-updateTimer();
 
 /* Falling Roses */
 for(let i=0;i<20;i++){
