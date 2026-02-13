@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My Valentine</title>
+<style>
+body{
+font-family: Arial;
+text-align:center;
+background:#ffe6f0;
+margin:0;
+padding:20px;
+}
+.page{
+display:none;
+}
+button{
+padding:10px 20px;
+margin:10px;
+font-size:16px;
+border:none;
+border-radius:8px;
+background:#ff4d88;
+color:white;
+cursor:pointer;
+}
+.gift{
+font-size:60px;
+cursor:pointer;
+margin:20px;
+}
+.hidden{
+display:none;
+}
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div id="page1" class="page" style="display:block;">
+<h1>Will you be my love? ❤️</h1>
+<button onclick="nextPage(2)">Yes 💕</button>
+<button onclick="alert('No option available 😌')">No</button>
+</div>
+
+<!-- PAGE 2 -->
+<div id="page2" class="page">
+<h1>Open Your Gifts 🎁</h1>
+<div class="gift" onclick="openGift(1)">🎁</div>
+<p id="gift1" class="hidden">A letter filled with my love 💌</p>
+
+<div class="gift" onclick="openGift(2)">🎁</div>
+<p id="gift2" class="hidden">A promise to stay forever 💍</p>
+
+<div class="gift" onclick="openGift(3)">🎁</div>
+<p id="gift3" class="hidden">A hug you can feel through screen 🤗</p>
+
+<button onclick="nextPage(3)">Next ➡</button>
+</div>
+
+<!-- PAGE 3 -->
+<div id="page3" class="page">
+<h1>More Surprises 🎀</h1>
+<div class="gift" onclick="openGift(4)">🎁</div>
+<p id="gift4" class="hidden">Our future home 🏡</p>
+
+<div class="gift" onclick="openGift(5)">🎁</div>
+<p id="gift5" class="hidden">Our cute little family 👶</p>
+
+<div class="gift" onclick="openGift(6)">🎁</div>
+<p id="gift6" class="hidden">Growing old together 👵👴</p>
+
+<button onclick="openAll()">Open All 🎊</button>
+<button onclick="nextPage(4)">Next ➡</button>
+</div>
+
+<!-- PAGE 4 -->
+<div id="page4" class="page">
+<h1>For You 🌹🍫</h1>
+<p style="font-size:60px;">🌹🌹🌹 🍫🍫🍫 🌹🌹🌹</p>
+<button onclick="nextPage(5)">Next ➡</button>
+</div>
+
+<!-- PAGE 5 -->
+<div id="page5" class="page">
+<h1>Our Marriage Journey 💍</h1>
+<p>
+Step 1: I choose you.<br>
+Step 2: You choose me.<br>
+Step 3: Families smile.<br>
+Step 4: We build our dream life.<br>
+Step 5: Forever begins. ❤️
+</p>
+</div>
+
+<script>
+function nextPage(page){
+document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+document.getElementById('page'+page).style.display='block';
+}
+
+function openGift(num){
+document.getElementById('gift'+num).classList.remove('hidden');
+}
+
+function openAll(){
+for(let i=4;i<=6;i++){
+document.getElementById('gift'+i).classList.remove('hidden');
+}
+}
+</script>
+
+</body>
+</html>
