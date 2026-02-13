@@ -2,58 +2,181 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>My Valentine</title>
+<title>Our Love</title>
+
 <style>
 body{
-font-family: Arial;
+font-family: 'Segoe UI', sans-serif;
 text-align:center;
-background:#ffe6f0;
+background: linear-gradient(to right, #ffdde1, #ee9ca7);
 margin:0;
 padding:20px;
+color:#4a0033;
 }
+
 .page{
 display:none;
+animation: fade 0.8s ease-in-out;
 }
+
+@keyframes fade{
+from{opacity:0;}
+to{opacity:1;}
+}
+
 button{
-padding:10px 20px;
+padding:12px 25px;
 margin:10px;
 font-size:16px;
 border:none;
-border-radius:8px;
+border-radius:10px;
 background:#ff4d88;
 color:white;
 cursor:pointer;
 }
+
 .gift{
-font-size:60px;
+font-size:65px;
 cursor:pointer;
 margin:20px;
+transition: transform 0.3s;
 }
+
+.gift:hover{
+transform: scale(1.1);
+}
+
 .hidden{
 display:none;
 }
+
+.longText{
+max-width:700px;
+margin:auto;
+white-space:pre-line;
+line-height:1.6;
+margin-top:15px;
+}
+
+.scrollBox{
+max-height:300px;
+overflow-y:auto;
+padding:10px;
+background:white;
+border-radius:10px;
+color:#4a0033;
+}
+
+.roses{
+font-size:50px;
+animation: float 2s infinite alternate;
+}
+
+@keyframes float{
+from{transform: translateY(0px);}
+to{transform: translateY(-15px);}
+}
 </style>
 </head>
+
 <body>
 
 <!-- PAGE 1 -->
 <div id="page1" class="page" style="display:block;">
-<h1>Will you be my love? ❤️</h1>
+<h1>Will you be my love 🪷❤️</h1>
 <button onclick="nextPage(2)">Yes 💕</button>
-<button onclick="alert('No option available 😌')">No</button>
+<button onclick="alert('No option available 😌 You are mine already ❤️')">No</button>
 </div>
 
 <!-- PAGE 2 -->
 <div id="page2" class="page">
 <h1>Open Your Gifts 🎁</h1>
+
 <div class="gift" onclick="openGift(1)">🎁</div>
-<p id="gift1" class="hidden">A letter filled with my love 💌</p>
+<div id="gift1" class="hidden longText">
+I love you, Kamal—
+not because I planned to,
+not because I searched for you,
+but because one quiet day
+my heart chose you
+and never turned back.
+I don’t know how it began,
+or why our paths crossed—
+maybe the stars whispered,
+maybe God smiled—
+but I don’t need the reason.
+All I know is this:
+with you, I am happy.
+I longed for a love
+that would hold me softer
+than I hold myself,
+a love that would guard my heart
+like something sacred.
+And you came—
+a gift I never asked for,
+yet always needed.
+With you, the world feels
+safe, warm, whole.
+</div>
 
 <div class="gift" onclick="openGift(2)">🎁</div>
-<p id="gift2" class="hidden">A promise to stay forever 💍</p>
+<div id="gift2" class="hidden longText">
+I don’t want you just in moments,
+not only in photographs
+or special dates circled in red.
+I want you in Mondays and midnights,
+in ordinary mornings,
+in sleepy Sundays—
+all 365 days,
+even the 366th.
+Let us celebrate love
+in grand ways and tiny ways,
+in loud laughter
+and quiet silence,
+in simple days
+and shining ones.
+Because with you, Kamal,
+every single day
+feels like something
+worth celebrating.
+</div>
 
 <div class="gift" onclick="openGift(3)">🎁</div>
-<p id="gift3" class="hidden">A hug you can feel through screen 🤗</p>
+<div id="gift3" class="hidden longText scrollBox">
+நான் உன்னை காதலிக்கிறேன் கமல் 💗
+I love you, Kamal ❤️
+Te amo, Kamal 💖
+Je t’aime, Kamal 💕
+Ich liebe dich, Kamal 💓
+Ti amo, Kamal 💗
+Te quiero, Kamal 💞
+Eu te amo, Kamal 💘
+Ik hou van jou, Kamal 💝
+Jag älskar dig, Kamal 💟
+Jeg elsker dig, Kamal ❣️
+Jeg elsker deg, Kamal 💌
+Minä rakastan sinua, Kamal 💙
+Я люблю тебя, Kamal 💜
+Я тебе кохаю, Kamal 🤍
+Seni seviyorum, Kamal 🧡
+أنا أحبك يا كمال ❤️‍🔥
+אני אוהבת אותך קמאל 💖
+मैं तुमसे प्यार करती हूँ कमल 💕
+আমি তোমাকে ভালোবাসি কমল 💓
+నేను నిన్ను ప్రేమిస్తున్నాను కమల్ 💞
+ನಾನು ನಿನ್ನನ್ನು ಪ್ರೀತಿಸುತ್ತೇನೆ ಕಮಲ್ 💘
+ഞാൻ നിന്നെ സ്നേഹിക്കുന്നു കമൽ 💝
+මම ඔයාට ආදරෙයි කමල් 💟
+我爱你 卡马尔 ❤️
+愛してる カマル 💕
+사랑해 카말 💓
+Saya cinta kamu Kamal 💗
+Aku cinta padamu Kamal 💞
+Σ’ αγαπώ, Καμάλ 💓
+Nakupenda, Kamal 💞
+Aloha wau iā ʻoe, Kamal ❤️
+Te aroha nei au ia koe, Kamal 💌
+</div>
 
 <button onclick="nextPage(3)">Next ➡</button>
 </div>
@@ -61,14 +184,15 @@ display:none;
 <!-- PAGE 3 -->
 <div id="page3" class="page">
 <h1>More Surprises 🎀</h1>
+
 <div class="gift" onclick="openGift(4)">🎁</div>
-<p id="gift4" class="hidden">Our future home 🏡</p>
+<p id="gift4" class="hidden longText">Our peaceful home filled with laughter 🏡</p>
 
 <div class="gift" onclick="openGift(5)">🎁</div>
-<p id="gift5" class="hidden">Our cute little family 👶</p>
+<p id="gift5" class="hidden longText">Growing together through every phase of life 💑</p>
 
 <div class="gift" onclick="openGift(6)">🎁</div>
-<p id="gift6" class="hidden">Growing old together 👵👴</p>
+<p id="gift6" class="hidden longText">Holding hands even when our hair turns grey 👵👴</p>
 
 <button onclick="openAll()">Open All 🎊</button>
 <button onclick="nextPage(4)">Next ➡</button>
@@ -77,20 +201,28 @@ display:none;
 <!-- PAGE 4 -->
 <div id="page4" class="page">
 <h1>For You 🌹🍫</h1>
-<p style="font-size:60px;">🌹🌹🌹 🍫🍫🍫 🌹🌹🌹</p>
+<div class="roses">🌹🌹🌹 🍫🍫🍫 🌹🌹🌹</div>
+<br>
 <button onclick="nextPage(5)">Next ➡</button>
 </div>
 
 <!-- PAGE 5 -->
 <div id="page5" class="page">
 <h1>Our Marriage Journey 💍</h1>
-<p>
-Step 1: I choose you.<br>
-Step 2: You choose me.<br>
-Step 3: Families smile.<br>
-Step 4: We build our dream life.<br>
-Step 5: Forever begins. ❤️
+
+<button onclick="openMarriage()">Click to See Our Journey</button>
+
+<p id="marriageText" class="hidden longText">
+Friendship – We connected, talked endlessly, and understood each other deeply.
+Trust – We learned to rely on one another emotionally and mentally.
+Commitment – We chose each other with clarity and certainty.
+Family Blessings – Our love was strengthened with support and approval.
+Sacred Promise – We exchanged vows to stay together in all phases of life.
+Partnership – We began building a peaceful, loving life side by side.
+
+❤️ We are married by our heart, soul and thoughts. ❤️
 </p>
+
 </div>
 
 <script>
@@ -107,6 +239,10 @@ function openAll(){
 for(let i=4;i<=6;i++){
 document.getElementById('gift'+i).classList.remove('hidden');
 }
+}
+
+function openMarriage(){
+document.getElementById('marriageText').classList.remove('hidden');
 }
 </script>
 
