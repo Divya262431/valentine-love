@@ -4,27 +4,30 @@
 <meta charset="UTF-8">
 <title>Our Love Story</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 <style>
 body{
-font-family: 'Segoe UI', sans-serif;
 margin:0;
-padding:20px;
+padding:0;
+font-family:'Poppins',sans-serif;
 text-align:center;
-background: linear-gradient(to right,#ffd6e8,#ffeef5);
-overflow-x:hidden;
+background: linear-gradient(to bottom right,#ffd6e8,#ffeef5,#fff5f8);
+background-attachment:fixed;
 color:#5a0033;
+overflow-x:hidden;
 }
 
 /* Floating Hearts */
 body::before{
-content:"❤️ 💕 💖 💗 💘 💞";
+content:"💗 💕 💖 💞 💘 💓 ❤️";
 position:fixed;
 top:0;
 left:0;
 width:100%;
-font-size:25px;
-opacity:0.2;
-animation: float 15s linear infinite;
+font-size:22px;
+opacity:0.15;
+animation: float 20s linear infinite;
 white-space:nowrap;
 }
 
@@ -33,9 +36,22 @@ from{transform:translateX(-100%);}
 to{transform:translateX(100%);}
 }
 
+h1{
+font-family:'Playfair Display',serif;
+font-weight:bold;
+font-size:32px;
+margin-top:40px;
+}
+
+.bold{
+font-weight:600;
+font-size:18px;
+}
+
 .page{
 display:none;
 animation:fade 0.8s ease-in-out;
+padding:25px;
 }
 
 @keyframes fade{
@@ -44,57 +60,58 @@ to{opacity:1;}
 }
 
 button{
-padding:12px 25px;
-margin:10px;
+padding:12px 28px;
+margin:12px;
 font-size:16px;
 border:none;
-border-radius:10px;
+border-radius:30px;
 background:#ff4d88;
 color:white;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
 background:#ff1a66;
+transform:scale(1.05);
 }
 
 .gift{
-font-size:65px;
-margin:20px;
+font-size:70px;
+margin:25px;
 cursor:pointer;
-transition:transform 0.3s;
+transition:0.3s;
 }
 
 .gift:hover{
-transform:scale(1.15);
+transform:scale(1.2);
 }
 
 .hidden{display:none;}
 
 .longText{
-max-width:800px;
+max-width:850px;
 margin:auto;
 white-space:pre-line;
-line-height:1.6;
-margin-top:15px;
+line-height:1.7;
+margin-top:20px;
+font-size:16px;
 }
 
 .pinkBox{
 background:#ffe6f2;
-padding:15px;
-border-radius:15px;
+padding:20px;
+border-radius:20px;
 max-height:350px;
 overflow-y:auto;
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
 }
 
-.teddy{
-font-size:90px;
-animation:hug 2s infinite alternate;
-}
-
-@keyframes hug{
-from{transform:scale(1);}
-to{transform:scale(1.1);}
+.teddyImage{
+width:260px;
+margin-top:20px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
 }
 
 .food{
@@ -104,12 +121,17 @@ animation:floatFood 2s infinite alternate;
 
 @keyframes floatFood{
 from{transform:translateY(0);}
-to{transform:translateY(-10px);}
+to{transform:translateY(-12px);}
 }
 </style>
 </head>
 
 <body>
+
+<!-- MUSIC -->
+<audio autoplay loop>
+<source src="love.mp3" type="audio/mpeg">
+</audio>
 
 <!-- PAGE 1 -->
 <div id="page1" class="page" style="display:block;">
@@ -121,8 +143,8 @@ to{transform:translateY(-10px);}
 <!-- PAGE 2 -->
 <div id="page2" class="page">
 <h1>Dudu & Bubu 💞</h1>
-<div class="teddy">🧸💋🧸</div>
-<p>I love you so much Mamaaa... ❤️🤍</p>
+<img src="dudu.jpg" class="teddyImage">
+<p class="bold">I love you so much Mamaaa... ❤️🤍</p>
 <button onclick="nextPage(3)">Next ➡</button>
 </div>
 
@@ -242,8 +264,8 @@ Te aroha nei au ia koe, Kamal 💌
 <div id="page5" class="page">
 <h1>For You 🌹🍫</h1>
 <div class="food">
-⚘️⚘️⚘️⚘️🍫🍫🍫🍫🍫🍫🍫🍬🍬🍬🍬🍭🍭🍭🍭🍭🥛🥛🥛🥛🥛🥛🥛
-🍒🍋🍉🍊🍋🍑🍌🥭🥭🍎🍓🍓🪷🪷🪷🪷🪷🪷🪷
+⚘️⚘️⚘️⚘️🍫🍫🍫🍫🍫🍫🍫🍬🍬🍬🍬🍭🍭🍭🍭🍭🥛🥛🥛🥛🥛
+🪷🪷🪷🪷🪷🪷🪷
 </div>
 <button onclick="nextPage(6)">Next ➡</button>
 </div>
@@ -266,7 +288,7 @@ Partnership – We began building a peaceful, loving life side by side.
 <!-- PAGE 7 -->
 <div id="page7" class="page">
 <h1>Forever ❤️</h1>
-<p>We are married by our heart, soul and thoughts.</p>
+<p class="bold">We are married by our heart, soul and thoughts.</p>
 </div>
 
 <script>
@@ -283,14 +305,13 @@ function openMarriage(){
 document.getElementById('marriageText').classList.remove('hidden');
 }
 
-/* Moving No Button */
-const noBtn = document.getElementById("noBtn");
-noBtn.addEventListener("mouseover", function(){
-noBtn.style.position = "absolute";
-noBtn.style.top = Math.random()*300 + "px";
-noBtn.style.left = Math.random()*300 + "px";
+const noBtn=document.getElementById("noBtn");
+noBtn.addEventListener("mouseover",function(){
+noBtn.style.position="absolute";
+noBtn.style.top=Math.random()*400+"px";
+noBtn.style.left=Math.random()*300+"px";
 });
 </script>
 
 </body>
-  </html>
+</html>
